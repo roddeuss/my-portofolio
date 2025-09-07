@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 const container = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.08 },
+    transition: { staggerChildren: 0.15 },
   },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 40 },
   show: {
     opacity: 1,
     y: 0,
@@ -55,66 +55,68 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="py-20 bg-gray-50 dark:bg-slate-900"
-    >
+    <section id="experience" className="py-20 bg-gray-50 dark:bg-slate-900">
       <div className="max-w-6xl mx-auto px-6">
+        {/* Section Title */}
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <motion.h2
             variants={fadeUp}
             className="text-3xl font-bold text-gray-900 dark:text-white"
           >
-            Working Experience
+            My Journey
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="mt-2 text-gray-600 dark:text-slate-300"
           >
-            A summary of my professional journey as a Software Engineer and Backend Developer.
+            A timeline of my professional experiences and growth.
           </motion.p>
         </motion.div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
+        {/* Timeline */}
+        <div className="relative border-l border-gray-300 dark:border-slate-700">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
               variants={fadeUp}
-              className="p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="mb-12 ml-6"
             >
-              <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-indigo-600">
-                    {exp.company}
-                  </h3>
-                  <p className="text-gray-700 dark:text-slate-200">
-                    {exp.title} — {exp.location}
-                  </p>
+              {/* Timeline dot */}
+              <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-indigo-600 rounded-full ring-8 ring-white dark:ring-slate-900"></span>
+
+              {/* Card */}
+              <div className="p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-indigo-600">
+                      {exp.company}
+                    </h3>
+                    <p className="text-gray-700 dark:text-slate-200">
+                      {exp.title} — {exp.location}
+                    </p>
+                  </div>
+                  <span className="text-sm text-gray-500 dark:text-slate-400 mt-2 md:mt-0">
+                    {exp.date}
+                  </span>
                 </div>
-                <span className="text-sm text-gray-500 dark:text-slate-400 mt-2 md:mt-0">
-                  {exp.date}
-                </span>
+                <ul className="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
+                  {exp.tasks.map((task, i) => (
+                    <li key={i}>{task}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
-                {exp.tasks.map((task, i) => (
-                  <li key={i}>{task}</li>
-                ))}
-              </ul>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
