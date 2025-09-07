@@ -43,13 +43,13 @@ export default function Hero({
     >
       <div className="container max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
         {/* Left: Text Content */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="space-y-6"
-        >
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="space-y-6 order-2 md:order-1"
+          >
           <div
             role="status"
             className="inline-flex items-center gap-2 text-sm rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 px-3 py-1 font-medium w-fit shadow-sm"
@@ -122,12 +122,12 @@ export default function Hero({
 
         {/* Right: Profile Image */}
         <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex justify-center relative mt-10 md:mt-0"
-        >
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex justify-center relative mt-10 md:mt-0 order-1 md:order-2"
+          >
           <motion.div
             whileHover={{ scale: 1.05, rotate: -2 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
