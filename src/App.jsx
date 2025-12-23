@@ -6,6 +6,7 @@ import Technologies from "./components/Technologies";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Loader from "./components/Loader";
+import Footer from "./components/Footer";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ function App() {
       <Experience />
       <Projects />
       <Contact />
+      <Footer name="Andreas Bilmar" year={2025} />
     </div>
   );
 }
